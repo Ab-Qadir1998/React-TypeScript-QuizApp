@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {  quizPropsType } from '../type/quiz-type'
-
+import '../App.css'
 
 
 const QuizCard: React.FC<quizPropsType> = ({
@@ -14,8 +14,9 @@ const QuizCard: React.FC<quizPropsType> = ({
     }
     return (
         <div className="container">
+
             <div className="questions">
-                {question}
+                <h4>{question}</h4>
                 <form onSubmit={(e:React.FormEvent<EventTarget>)=>callback(e, selected)}>
                     {
                         options.map((opt: string, index: number) => {
@@ -29,7 +30,7 @@ const QuizCard: React.FC<quizPropsType> = ({
                             );
                         })
                     }
-                    <input type="submit" />
+                    <input type="submit" className="submit"/>
                 </form>
             </div>
         </div>
