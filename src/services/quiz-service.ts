@@ -7,6 +7,7 @@ export const getQuiz = async (totalQuestions : number, level : string): Promise<
         return {
             question: questionObj.question,
             answer : questionObj.correct_answer,
+            correct_answer : questionObj.correct_answer,
             option: questionObj.incorrect_answers.concat(questionObj.correct_answer)
         }
     })

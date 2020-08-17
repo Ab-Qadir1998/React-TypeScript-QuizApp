@@ -12,10 +12,11 @@ export type QuizType = {
     question: string
     answer: string
     option: string[]
+    correct_answer: string
 }
 
 export type quizPropsType = {
     question : string,
     options : string[],
-    callback : (e:React.FormEvent<EventTarget>)=>void
+    callback : (e:React.FormEvent<EventTarget>, ans: string)=>void
 }
