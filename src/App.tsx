@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React,{ useEffect, useState } from 'react';
+import { getQuiz } from './services/quiz-service'
+import { Quiz, QuizType } from './type/quiz-type'
+import QuizCard from './components/QuizCard'
 function App() {
+  let [ quiz, setQuiz ] = useState<QuizType[]>([]);
+  let [ currentStep, setcurrentStep ] = useState(0);
+  useEffect(()=>{
+   async function fetchData () {
+      const questions:QuizType[] = await getQuiz(10, 'easy');
+      setQuiz(questions)
+    }
+    fetchData();
+  },[])
+  if(!quiz.length)
+  return <h3>Loading...</h3>
+  const handleSubmit = (e:React.FormEvent<EventTarget>)=> {
+    e.preventDefault()
+    setcurrentStep(++currentStep)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <QuizCard
+      options={quiz[currentStep].option}
+      question={quiz[currentStep].question}
+      callback={handleSubmit}
+      />
     </div>
   );
 }
