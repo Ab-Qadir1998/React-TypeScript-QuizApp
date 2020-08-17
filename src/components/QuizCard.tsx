@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Quiz, quizPropsType } from '../type/quiz-type'
+import {  quizPropsType } from '../type/quiz-type'
 
 
 

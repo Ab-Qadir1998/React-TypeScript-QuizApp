@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from 'react';
 import { getQuiz } from './services/quiz-service'
-import { Quiz, QuizType } from './type/quiz-type'
+import { QuizType } from './type/quiz-type'
 import QuizCard from './components/QuizCard'
 function App() {
   let [ quiz, setQuiz ] = useState<QuizType[]>([]);
@@ -18,7 +18,7 @@ function App() {
     e.preventDefault();
 
     const currentQuiz: QuizType = quiz[currentStep];
-    console.log('correct ans:' + currentQuiz.correct_answer + '- - user Ans:' + userAns);
+    // console.log('correct ans:' + currentQuiz.correct_answer + '- - user Ans:' + userAns);
     
     if(userAns === currentQuiz.correct_answer){
       setScore(++score)
